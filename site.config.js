@@ -10,12 +10,12 @@ const CONFIG = {
     github: "https://github.com/comeevery-git/",
     instagram: "https://www.instagram.com/hee_talk/",
   },
-  projects: [
-    {
-      name: `lydia-log`,
-      href: "https://github.com/comeevery-git",
-    },
-  ],
+//   projects: [
+//     {
+//       name: `lydia-log`,
+//       href: "https://github.com/comeevery-git",
+//     },
+//   ],
   // blog setting (required)
   blog: {
     title: "lydia-log",
