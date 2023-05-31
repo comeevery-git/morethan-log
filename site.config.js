@@ -1,31 +1,31 @@
 const CONFIG = {
   // profile setting (required)
   profile: {
-    name: "morethanmin",
+    name: "lydia.s.kang",
     image: "/avatar.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
-    role: "frontend developer",
-    bio: "I develop everything using node.",
-    email: "morethanmin.dev@gmail.com",
-    linkedin: "morethanmin",
-    github: "morethanmin",
-    instagram: "",
+    role: "backend developer",
+    bio: "백엔드 개발자의 여정을 기록합니다. 모든 소통에 열려있습니다 :)",
+    email: "comeevery@gmail.com",
+    linkedin: "https://www.linkedin.com/in/%EC%88%98%ED%9D%AC-%EA%B0%95-397116228/",
+    github: "https://github.com/comeevery-git/",
+    instagram: "https://www.instagram.com/hee_talk/",
   },
   projects: [
     {
-      name: `morethan-log`,
-      href: "https://github.com/morethanmin/morethan-log",
+      name: `lydia-log`,
+      href: "https://github.com/comeevery-git",
     },
   ],
   // blog setting (required)
   blog: {
-    title: "morethan-log",
-    description: "welcome to morethan-log!",
-    theme: "auto", // ['light', 'dark', 'auto']
+    title: "lydia-log",
+    description: "welcome to lydia-log!",
+    theme: "dark", // ['light', 'dark', 'auto']
   },
 
   // CONFIG configration (required)
   link: "https://morethan-log.vercel.app",
-  since: 2022, // If leave this empty, current year will be used.
+  since: 2023, // If leave this empty, current year will be used.
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   ogImageGenerateURL: "https://og-image-korean.vercel.app", // The link to generate OG image, don't end with a slash
   seo: {
