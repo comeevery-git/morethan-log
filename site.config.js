@@ -7,7 +7,7 @@ const CONFIG = {
     bio: "백엔드 개발자의 여정을 기록합니다. 모든 소통에 열려있습니다 :)",
     email: "comeevery@gmail.com",
     linkedin: "https://www.linkedin.com/in/%EC%88%98%ED%9D%AC-%EA%B0%95-397116228/",
-//     github: "https://github.com/comeevery-git/",
+     github: "https://github.com/comeevery-git/",
     instagram: "https://www.instagram.com/hee_talk/",
   },
    projects: [
