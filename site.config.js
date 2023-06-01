@@ -12,8 +12,8 @@ const CONFIG = {
   },
    projects: [
       {
-        name: `github`,
-        href: "https://github.com/comeevery-git",
+        name: `Untilled`,
+        href: "",
       },
    ],
   // blog setting (required)
