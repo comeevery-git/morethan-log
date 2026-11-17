@@ -1,5 +1,5 @@
 import { CONFIG } from "site.config"
-import { NotionAPI } from "notion-client"
+import { CompatNotionAPI } from "./notionApi"
 import { idToUuid } from "notion-utils"
 
 import getAllPageIds from "@libs/utils/notion/getAllPageIds"
@@ -25,7 +25,7 @@ export async function getPosts() {
   }
 
   let id = CONFIG.notionConfig.pageId as string
-  const api = new NotionAPI()
+  const api = new CompatNotionAPI()
 
   const response = await api.getPage(id)
   id = idToUuid(id)
