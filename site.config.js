@@ -12,8 +12,12 @@ const CONFIG = {
   },
    projects: [
       {
-        name: `Untilled`,
-        href: "",
+        name: `AM02 iOS`,
+        href: "https://apps.apple.com/app/id6758390140",
+      },
+      {
+        name: `AM02 Android`,
+        href: "https://play.google.com/store/apps/details?id=com.talkteam.am02",
       },
    ],
   // blog setting (required)
