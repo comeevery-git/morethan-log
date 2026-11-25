@@ -1,6 +1,7 @@
 import { CONFIG } from "site.config"
 import Image from "next/image"
 import React from "react"
+import { SiNotion } from "react-icons/si"
 
 type Props = {
   className?: string
@@ -27,6 +28,17 @@ const MobileProfileCard: React.FC<Props> = () => {
               {CONFIG.profile.role}
             </div>
             <div className="text-sm">{CONFIG.profile.bio}</div>
+            {CONFIG.profile.notion && (
+              <a
+                href={CONFIG.profile.notion}
+                rel="noreferrer"
+                target="_blank"
+                className="min-h-[44px] inline-flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
+              >
+                <SiNotion className="text-base flex-shrink-0" />
+                notion
+              </a>
+            )}
           </div>
         </div>
         {/* <div className="flex">

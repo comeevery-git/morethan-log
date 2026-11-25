@@ -10,6 +10,8 @@ const CONFIG = {
     linkedin: "%EC%88%98%ED%9D%AC-%EA%B0%95-397116228",
     github: "comeevery-git",
     instagram: "hee_talk",
+    // 전체 주소. 노션 프로필은 앞부분이 고정된 서비스 주소가 아니라서
+    notion: "https://lydia-log.notion.site/Suhee-Kang-6a74265df2cf4e55ab1523008753a3e6",
   },
    projects: [
       {
