@@ -20,6 +20,10 @@ const CONFIG = {
         name: `AM02 Android`,
         href: "https://play.google.com/store/apps/details?id=com.talkteam.am02",
       },
+      {
+        name: `AI 활용 코스`,
+        href: "/study/lesson",
+      },
    ],
   // blog setting (required)
   blog: {
