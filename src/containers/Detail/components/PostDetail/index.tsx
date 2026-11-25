@@ -8,6 +8,7 @@ import CommentBox from "./CommentBox"
 import Category from "@components/Category"
 import Image from "next/image"
 import Link from "next/link"
+import useIsDark from "@hooks/useIsDark"
 
 const Code = dynamic(() =>
   import("react-notion-x/build/third-party/code").then(async (m) => {
@@ -79,6 +80,7 @@ type Props = {
 
 const PostDetail: React.FC<Props> = ({ blockMap, data }) => {
   const category = (data.category && data.category?.[0]) || undefined
+  const isDark = useIsDark()
 
   return (
     <div
@@ -98,6 +100,7 @@ const PostDetail: React.FC<Props> = ({ blockMap, data }) => {
           <div className="-mt-4">
             <NotionRenderer
               recordMap={blockMap}
+              darkMode={isDark}
               components={{
                 Code,
                 Collection,

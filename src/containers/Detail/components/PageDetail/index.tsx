@@ -4,6 +4,7 @@ import React from "react"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
+import useIsDark from "@hooks/useIsDark"
 const Code = dynamic(() =>
   import("react-notion-x/build/third-party/code").then((m) => m.Code)
 )
@@ -38,10 +39,12 @@ type Props = {
 }
 
 const PageDetail: React.FC<Props> = ({ blockMap, data }) => {
+  const isDark = useIsDark()
   return (
     <div className="m-auto max-w-4xl">
       <NotionRenderer
         recordMap={blockMap}
+        darkMode={isDark}
         components={{
           Code,
           Collection,
