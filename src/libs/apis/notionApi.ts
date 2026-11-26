@@ -4,6 +4,13 @@ import { NotionAPI } from "notion-client"
 const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 
+// 노션은 요청이 몰리면 429 를 줌. 빌드(글 수십 편을 한꺼번에 생성), 피드에서 잠깐 막혀도 전체가 실패하지 않게 기다렸다 다시 시도
+// (2026-11-26 로컬 빌드가 429 하나로 멈춘 뒤 추가)
+const RETRY_ON_429 = 3
+const RETRY_BASE_MS = 1500
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+const isRateLimited = (error: any) => error?.response?.statusCode === 429
+
 // 응답 중 레코드 묶음 키. 노션이 레코드를 { value: { value, role } } 로 한 겹 더 감싸서 보냄
 const RECORD_MAP_KEYS = ["recordMap", "recordMapWithRoles"]
 
@@ -49,10 +56,17 @@ export const unwrapResponse = <T>(response: T): T => {
 // 모든 요청이 거치는 fetch 에서 UA 지정과 응답 풀기를 처리해, getPage 내부 판정과 react-notion-x 렌더가 예전 모양을 그대로 받음
 export class CompatNotionAPI extends NotionAPI {
   async fetch<T>(args: FetchArgs): Promise<T> {
-    const response = await super.fetch<T>({
-      ...args,
-      headers: { ...args.headers, "user-agent": USER_AGENT },
-    })
-    return unwrapResponse(response)
+    for (let attempt = 0; ; attempt++) {
+      try {
+        const response = await super.fetch<T>({
+          ...args,
+          headers: { ...args.headers, "user-agent": USER_AGENT },
+        })
+        return unwrapResponse(response)
+      } catch (error) {
+        if (!isRateLimited(error) || attempt >= RETRY_ON_429) throw error
+        await wait(RETRY_BASE_MS * (attempt + 1))
+      }
+    }
   }
 }
