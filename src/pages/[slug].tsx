@@ -81,6 +81,7 @@ DetailPage.getLayout = function getlayout(page) {
       description: page.props.post.summary,
       type: page.props.post.type[0],
       url: `${CONFIG.link}/${page.props.post.slug}`,
+      noindex: CONFIG.seo.noindexSlugs.includes(page.props.post.slug),
     }
   }
   return (

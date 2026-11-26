@@ -30,7 +30,8 @@ const CONFIG = {
   // blog setting (required)
   blog: {
     title: "lydia-log",
-    description: "welcome to lydia-log!",
+    description:
+      "백엔드 개발자 lydia 의 기술 블로그. Claude Code 같은 AI 도구 활용과 백엔드 개발을 정리합니다.",
     theme: "auto", // ['light', 'dark', 'auto']
   },
 
@@ -38,10 +39,12 @@ const CONFIG = {
   // 이 블로그 주소. og:url, robots.txt, sitemap.xml 이 이 값으로 만들어짐
   link: "https://lydia-kang.vercel.app",
   since: 2023, // If leave this empty, current year will be used.
-  lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
+  // html lang 과 날짜 표시에 쓰임. og:locale 은 MetaConfig 가 ko_KR 로 바꿔 씀
+  lang: "ko-KR", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   ogImageGenerateURL: "https://og-image-korean.vercel.app", // The link to generate OG image, don't end with a slash
   seo: {
-    keywords: ["Blog", "Website", "Notion"],
+    // 검색에 노출하지 않을 글 slug. sitemap 에서 빠지고 그 글에 noindex 메타가 붙음
+    noindexSlugs: ["resume"],
   },
 
   // notion configuration (required)

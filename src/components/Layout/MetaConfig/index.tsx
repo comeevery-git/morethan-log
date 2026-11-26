@@ -8,28 +8,35 @@ export type MetaConfigProps = {
   date?: string
   image?: string
   url: string
+  // 검색에 노출하지 않음 (404, site.config.js seo.noindexSlugs). canonical 도 넣지 않음
+  noindex?: boolean
 }
 
 const MetaConfig: React.FC<MetaConfigProps> = ({ ...props }) => {
   const meta = {
     ...props,
   }
+  // OGP 는 글이면 article, 나머지는 website 만 받음
+  const ogType = meta.type === "Post" ? "article" : "website"
+  // html lang 은 ko-KR, OGP 는 ko_KR 형식
+  const ogLocale = CONFIG.lang?.replace("-", "_")
 
   return (
     <Head>
       <title>{meta.title}</title>
-      <meta name="robots" content="follow, index" />
+      <meta
+        name="robots"
+        content={meta.noindex ? "noindex, follow" : "follow, index"}
+      />
       <meta charSet="UTF-8" />
-      {CONFIG.seo.keywords && (
-        <meta name="keywords" content={CONFIG.seo.keywords.join(", ")} />
-      )}
       <meta name="description" content={meta.description} />
+      {!meta.noindex && <link rel="canonical" href={meta.url} />}
       {/* og */}
-      <meta property="og:type" content={meta.type} />
+      <meta property="og:type" content={ogType} />
       <meta property="og:title" content={meta.title} />
       <meta property="og:description" content={meta.description} />
       <meta property="og:url" content={meta.url} />
-      {CONFIG.lang && <meta property="og:locale" content={CONFIG.lang} />}
+      {ogLocale && <meta property="og:locale" content={ogLocale} />}
       {meta.image && <meta property="og:image" content={meta.image} />}
       {/* twitter */}
       <meta name="twitter:title" content={meta.title} />
